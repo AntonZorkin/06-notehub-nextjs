@@ -1,5 +1,5 @@
-import axios from "axios";
-import type { NewNote, Note } from "@/types/note";
+import axios from 'axios';
+import type { NewNote, Note } from '@/types/note';
 
 export interface NotesHttpResponse {
   notes: Note[];
@@ -30,7 +30,7 @@ export const fetchNotes = async ({
         search,
       },
       headers: { Authorization: `Bearer ${myKey}` },
-    }
+    },
   );
   const data = response.data;
 
@@ -38,35 +38,35 @@ export const fetchNotes = async ({
 };
 export const createNote = async (newNote: NewNote): Promise<Note> => {
   const response = await axios.post<Note>(
-    `https://notehub-public.goit.study/api/notes`, newNote,
-    {     
+    `https://notehub-public.goit.study/api/notes`,
+    newNote,
+    {
       headers: { Authorization: `Bearer ${myKey}` },
-    }
+    },
   );
   const data = response.data;
 
   return data;
 };
-export const deleteNote = async (id:number): Promise<Note> => {
+export const deleteNote = async (id: string): Promise<Note> => {
   const response = await axios.delete<Note>(
     `https://notehub-public.goit.study/api/notes/${id}`,
-    {     
+    {
       headers: { Authorization: `Bearer ${myKey}` },
-    }
+    },
   );
   const data = response.data;
 
   return data;
 };
-export const fetchNoteById = async (id:number): Promise<Note> => {
+export const fetchNoteById = async (id: string): Promise<Note> => {
   const response = await axios.get<Note>(
     `https://notehub-public.goit.study/api/notes/${id}`,
-    {     
+    {
       headers: { Authorization: `Bearer ${myKey}` },
-    }
+    },
   );
   const data = response.data;
 
   return data;
 };
-
